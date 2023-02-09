@@ -1,7 +1,8 @@
 # Containerized apache server for S3 assets
 
 This folder comprises a docker build context for an image that defines an apache server.
-When a container is run, the apache server performs that task of retrieving s3 artifacts from a predefined bucket via an object lambda endpoint.
+When a container is run, the apache server proxies requests for s3 artifacts to a predefined bucket via an object lambda access point *(olap)*.
+In order to contact the olap, apache uses the signer.sh script, documented [here](./signer.md), to sign the proxy request with a SigV4 authorization header.
 
 ### Steps:
 
@@ -32,7 +33,7 @@ When a container is run, the apache server performs that task of retrieving s3 a
    sh docker.sh \
      task=run \
      profile=infnprd \
-     olap=bu-wp-assets-object-lambda-dev-olap
+     olap=bu-wp-assets-olap
    ```
 
    In the prior example, the named profile in the ~/.aws/credentials is referenced. From it the credentials and account number are derived.
@@ -42,7 +43,7 @@ When a container is run, the apache server performs that task of retrieving s3 a
    cd docker/baseline
    sh docker.sh \
      task=run \
-     olap=bu-wp-assets-object-lambda-dev-olap \
+     olap=bu-wp-assets-olap \
      aws_access_key_id=[ID] \
      aws_secret_access_key=[KEY] \
      aws_account_nbr=770203350335
@@ -55,7 +56,7 @@ When a container is run, the apache server performs that task of retrieving s3 a
    sh docker.sh \
      task=deploy \
      profile=infnprd \
-     olap=bu-wp-assets-object-lambda-dev-olap
+     olap=bu-wp-assets-olap
    ```
 
 4. **Browser:**

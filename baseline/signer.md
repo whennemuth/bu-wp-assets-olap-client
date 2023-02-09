@@ -23,7 +23,7 @@ Signer.sh, can either, depending on which you choose, curl the object lambda end
          profile=infnprd \
          task=auth \
          aws_account_nbr=770203350335 \
-         olap=bu-wp-assets-object-lambda-dev-olap \
+         olap=bu-wp-assets-olap \
          object_key=dilbert1.gif
      ```
 
@@ -35,7 +35,7 @@ Signer.sh, can either, depending on which you choose, curl the object lambda end
          profile=infnprd \
          task=auth \
          aws_account_nbr=770203350335 \
-         olap=bu-wp-assets-object-lambda-dev-olap \
+         olap=bu-wp-assets-olap \
          object_key=dilbert1.gif \
          time_stamp=$(date --utc +'%Y%m%dT%H%M000000Z')
      ```
@@ -50,7 +50,7 @@ Signer.sh, can either, depending on which you choose, curl the object lambda end
          aws_secret_access_key=[key] \
          aws_session_token=[token] \
          aws_account_nbr=770203350335 \
-         olap=olap=bu-wp-assets-object-lambda-dev-olap \
+         olap=olap=bu-wp-assets-olap \
          object_key=dilbert1.gif
      ```
 
@@ -62,7 +62,7 @@ Signer.sh, can either, depending on which you choose, curl the object lambda end
          profile=infnprd \
          task=curl \
          aws_account_nbr=770203350335 \
-         olap=bu-wp-assets-object-lambda-dev-olap \
+         olap=bu-wp-assets-olap \
          object_key=dilbert1.gif
      ```
 

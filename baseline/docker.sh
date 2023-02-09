@@ -50,11 +50,11 @@ esac
 # sh docker.sh \
 #   task=deploy \
 #   profile=infnprd \
-#   olap=bu-wp-assets-object-lambda-dev-olap
+#   olap=bu-wp-assets-olap
 
 # sh docker.sh \
 #   task=deploy \
-#   olap=bu-wp-assets-object-lambda-dev-olap \
+#   olap=bu-wp-assets-olap \
 #   aws_access_key_id=[ID] \
 #   aws_secret_access_key=[KEY] \
 #   aws_account_nbr=770203350335

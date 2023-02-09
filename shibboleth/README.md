@@ -7,7 +7,7 @@ Initially apache will require that the user be authenticated with the shib-test.
 ### Steps:
 
 1. **Create stack:**
-   Make sure the main cloudformation stack has been created so that the bucket and endpoint are available. *(See: [README.md](../../Readme.md))*
+   Make sure the main cloud-formation stack has been created so that the bucket and endpoint are available. *(See: [README.md](../../Readme.md))*
    For now, DO NOT opt to create a public ec2 instance as part of stack creation. That ec2 would be reachable over the generated elastic ip address, but we would need it to be reachable over the address that the shibboleth IDP has been configured to redirect successful authentication requests to.
    Apache will be operating from a container we run locally and contact through that special hostname already known to the IDP *(see next step)*.
 
@@ -15,7 +15,7 @@ Initially apache will require that the user be authenticated with the shib-test.
    Make an entry in your host file. This should match the host portion of the "SERVER_NAME" value in use further below.
    In this case we are borrowing (and impersonating) an existing IDP configuration for kuali.
    
-   - *(NOTE: Once a ticket is put in to have the desired shibboleth configuration installed at the IDP, the value reflecting a portion of the entity_id can be used instead. Also, the ec2 option for stack creation can be revisited at this point if route53 is involved and BU networking can delegate name resolution to it - SEE: INC13537073)*
+   - *(NOTE: Once a ticket is put in to have the desired shibboleth configuration installed at the IDP, the AssertionConsumerService location values in the samlMeta.xml provided will reflect what can be used instead. Also, the ec2 option for stack creation can be revisited at this point to involve route53 and BU networking can delegate name resolution to it - SEE: INC13537073)*
    
    ```
    127.0.0.1	warren.kualitest.research.bu.edu
@@ -49,7 +49,7 @@ Initially apache will require that the user be authenticated with the shib-test.
    EXAMPLE:
    
    ```
-   OLAP=bu-wp-assets-object-lambda-dev-olap
+   OLAP=bu-wp-assets-olap
    SERVER_NAME=warren.kualitest.research.bu.edu
    SP_ENTITY_ID=https://*.kualitest.research.bu.edu/shibboleth
    IDP_ENTITY_ID=https://shib-test.bu.edu/idp/shibboleth
