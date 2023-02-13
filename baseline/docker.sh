@@ -7,7 +7,7 @@ source ./credentials.sh
 parseArgs $@
 
 build() {
-  docker build -t bu-wp-assets-object-lambda:latest .
+  docker build -t bu-wp-assets-olap:latest .
   docker rmi $(docker images --filter dangling=true -q) 2> /dev/null || true
 }
 
@@ -15,7 +15,7 @@ run() {
 
   [ -n "$PROFILE" ] && setLocalCredentials $PROFILE
 
-  [ ! -d logs ] && mkdir logs
+  [ ! -d logs ] && mkdir logs || rm -rf logs/*
 
   createEnvFile && \
     echo "OLAP=$OLAP" >> vars.env
@@ -28,7 +28,7 @@ run() {
     --env-file vars.env \
     -v $(pwd)/default.conf:/etc/apache2/sites-enabled/default.conf \
     -v $(pwd)/logs:/var/log/apache2 \
-    bu-wp-assets-object-lambda:latest
+    bu-wp-assets-olap:latest
 }
 
 kill() {
@@ -46,15 +46,3 @@ case "$TASK" in
     kill && build && run
     ;;
 esac
-
-# sh docker.sh \
-#   task=deploy \
-#   profile=infnprd \
-#   olap=bu-wp-assets-olap
-
-# sh docker.sh \
-#   task=deploy \
-#   olap=bu-wp-assets-olap \
-#   aws_access_key_id=[ID] \
-#   aws_secret_access_key=[KEY] \
-#   aws_account_nbr=770203350335

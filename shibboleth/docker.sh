@@ -9,7 +9,7 @@ source ../baseline/credentials.sh
 parseArgs $@
 
 build() {
-  docker build -t bu-wp-assets-object-lambda-shib:latest .
+  docker build -t bu-wp-assets-olap-shib:latest .
   docker rmi $(docker images --filter dangling=true -q) 2> /dev/null || true
 }
 
@@ -70,7 +70,7 @@ run() {
       -v $(pwd)/$(getKeyName 'public'):/etc/shibboleth/$(getKeyName 'public') \
       -v $(pwd)/logs:/var/log/apache2 \
       -v $(pwd)/logs-shib:/var/log/shibboleth \
-      bu-wp-assets-object-lambda-shib:latest
+      bu-wp-assets-olap-shib:latest
   fi
 }
 

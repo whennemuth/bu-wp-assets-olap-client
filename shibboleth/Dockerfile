@@ -1,4 +1,4 @@
-FROM bu-wp-assets-object-lambda
+FROM bu-wp-assets-olap
 
 # Install mod_shib
 RUN \
@@ -11,6 +11,7 @@ COPY apache-startup.sh /etc/apache2/
 COPY shibboleth2-template.xml /etc/shibboleth/
 
 RUN \
+  dos2unix /etc/apache2/*.sh && \
   chmod a+x /etc/apache2/*.sh && \
   chmod a+rw /etc/shibboleth/shibboleth2-template.xml
 

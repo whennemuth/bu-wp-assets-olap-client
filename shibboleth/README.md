@@ -49,7 +49,7 @@ Initially apache will require that the user be authenticated with the shib-test.
    EXAMPLE:
    
    ```
-   OLAP=bu-wp-assets-olap
+   OLAP=bu-wp-assets-olap-dev-olap
    SERVER_NAME=warren.kualitest.research.bu.edu
    SP_ENTITY_ID=https://*.kualitest.research.bu.edu/shibboleth
    IDP_ENTITY_ID=https://shib-test.bu.edu/idp/shibboleth

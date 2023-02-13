@@ -33,7 +33,7 @@ In order to contact the olap, apache uses the signer.sh script, documented [here
    sh docker.sh \
      task=run \
      profile=infnprd \
-     olap=bu-wp-assets-olap
+     olap=bu-wp-assets-olap-dev-olap
    ```
 
    In the prior example, the named profile in the ~/.aws/credentials is referenced. From it the credentials and account number are derived.
@@ -43,7 +43,7 @@ In order to contact the olap, apache uses the signer.sh script, documented [here
    cd docker/baseline
    sh docker.sh \
      task=run \
-     olap=bu-wp-assets-olap \
+     olap=bu-wp-assets-olap-dev-olap \
      aws_access_key_id=[ID] \
      aws_secret_access_key=[KEY] \
      aws_account_nbr=770203350335
@@ -56,7 +56,7 @@ In order to contact the olap, apache uses the signer.sh script, documented [here
    sh docker.sh \
      task=deploy \
      profile=infnprd \
-     olap=bu-wp-assets-olap
+     olap=bu-wp-assets-olap-dev-olap
    ```
 
 4. **Browser:**
