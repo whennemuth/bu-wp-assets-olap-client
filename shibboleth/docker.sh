@@ -32,7 +32,7 @@ run() {
       if [ -z "$SHIB_SP_CERT" ] ; then echo "SHIB_SP_CERT"; return; fi
       if [ -z "$AWS_ACCESS_KEY_ID" ] ; then echo "AWS_ACCESS_KEY_ID"; return; fi
       if [ -z "$AWS_SECRET_ACCESS_KEY" ] ; then echo "AWS_SECRET_ACCESS_KEY"; return; fi
-      if [ -z "$AWS_SESSION_TOKEN" ] ; then echo "AWS_SESSION_TOKEN"; return; fi
+      # if [ -z "$AWS_SESSION_TOKEN" ] ; then echo "AWS_SESSION_TOKEN"; return; fi
       if [ -z "$AWS_ACCOUNT_NBR" ] ; then echo "AWS_ACCOUNT_NBR"; return; fi
       if [ -z "$REGION" ] ; then echo "REGION"; return; fi
       if [ -z "$SP_ENTITY_ID" ] ; then echo "SP_ENTITY_ID"; return; fi
