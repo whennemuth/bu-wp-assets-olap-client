@@ -6,9 +6,9 @@ Initially apache will require that the user be authenticated with the shib-test.
 
 ### Steps:
 
-1. **Create stack:**
-   Make sure the main cloud-formation stack has been created so that the bucket and endpoint are available. *(See: [README.md](../../Readme.md))*
-   For now, DO NOT opt to create a public ec2 instance as part of stack creation. That ec2 would be reachable over the generated elastic ip address, but we would need it to be reachable over the address that the shibboleth IDP has been configured to redirect successful authentication requests to.
+1. **Create olap stack:**
+   Make sure the main cloud-formation stack has been created so that the bucket and endpoint are available. *(See: [README.md](https://github.com/whennemuth/bu-wp-assets-olap/README.md))*
+   If you opt to create a public ec2 instance as part of stack creation, make sure you specify a `HOST_NAME` parameter that reflects a common name that the shibboleth IDP knows about *(as of now we are borrowing from kuali on shib-test: "*.kualitest.research.bu.edu")*. Failure to do so would mean that ec2 would be reachable over the generated elastic ip address, but we would need it to be reachable over the address that the shibboleth IDP has been configured to redirect successful authentication requests to.
    Apache will be operating from a container we run locally and contact through that special hostname already known to the IDP *(see next step)*.
 
 2. **Host file:**
@@ -18,7 +18,7 @@ Initially apache will require that the user be authenticated with the shib-test.
    - *(NOTE: Once a ticket is put in to have the desired shibboleth configuration installed at the IDP, the AssertionConsumerService location values in the samlMeta.xml provided will reflect what can be used instead. Also, the ec2 option for stack creation can be revisited at this point to involve route53 and BU networking can delegate name resolution to it - SEE: INC13537073)*
    
    ```
-   127.0.0.1	warren.kualitest.research.bu.edu
+   127.0.0.1	dev.kualitest.research.bu.edu
    ```
    
 3. **Prepare a parameters file:**
@@ -50,7 +50,7 @@ Initially apache will require that the user be authenticated with the shib-test.
    
    ```
    OLAP=bu-wp-assets-olap-dev-olap
-   SERVER_NAME=warren.kualitest.research.bu.edu
+   SERVER_NAME=dev.kualitest.research.bu.edu
    SP_ENTITY_ID=https://*.kualitest.research.bu.edu/shibboleth
    IDP_ENTITY_ID=https://shib-test.bu.edu/idp/shibboleth
    SHIB_SP_KEY=sp-key.pem
@@ -105,9 +105,9 @@ Initially apache will require that the user be authenticated with the shib-test.
 6. **Browser:**
    Apache is running with a virtual host that matches the host file entry made earlier.
    This means you can get to it through the container on port 80 or 443: 
-   https://warren.kualitest.research.bu.edu/index.htm
+   https://dev.kualitest.research.bu.edu/index.htm
    or you can target an image directly:
-   https://warren.kualitest.research.bu.edu/dilbert1.gif
+   https://dev.kualitest.research.bu.edu/dilbert1.gif
 
 NOTES:
 
