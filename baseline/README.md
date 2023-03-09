@@ -29,7 +29,7 @@ In order to contact the olap, apache uses the signer.sh script, documented [here
    then run the container *(the "olap" parameter is the name of the object lambda endpoint created in step one):*
 
    ```
-   cd docker/baseline
+   cd baseline
    sh docker.sh \
      task=run \
      profile=infnprd \
@@ -40,7 +40,7 @@ In order to contact the olap, apache uses the signer.sh script, documented [here
    However, you can also enter those individually:
 
    ```
-   cd docker/baseline
+   cd baseline
    sh docker.sh \
      task=run \
      olap=bu-wp-assets-olap-dev-olap \
@@ -52,7 +52,7 @@ In order to contact the olap, apache uses the signer.sh script, documented [here
    You can also build/rebuild and run/rerun the container in a single step *(use "deploy" instead of "run")*:
 
    ```
-   cd docker/baseline
+   cd baseline
    sh docker.sh \
      task=deploy \
      profile=infnprd \

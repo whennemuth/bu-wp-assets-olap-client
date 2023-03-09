@@ -13,7 +13,7 @@ Initially apache will require that the user be authenticated with the shib-test.
 
 2. **Host file:**
    Make an entry in your host file. This should match the host portion of the "SERVER_NAME" value in use further below.
-   In this case we are borrowing (and impersonating) an existing IDP configuration for kuali.
+   In this case we are borrowing (and impersonating) an existing SP configuration for kuali.
    
    - *(NOTE: Once a ticket is put in to have the desired shibboleth configuration installed at the IDP, the AssertionConsumerService location values in the samlMeta.xml provided will reflect what can be used instead. Also, the ec2 option for stack creation can be revisited at this point to involve route53 and BU networking can delegate name resolution to it - SEE: INC13537073)*
    
@@ -44,7 +44,7 @@ Initially apache will require that the user be authenticated with the shib-test.
 
    - SHIB_CERT_KEY: The name of the public key used by the shibboleth2.xml file. The "public" part of the keypair known by the IDP. The file itself will be mounted into the /etc/shibboleth directory of the container with this name
 
-   - SHELL: Set this to true, and the container will stay running, but apache won't be started. Usefull for shelling into the container and examining how the startup-script referenced by the Dockerfile CMD instruction went.
+   - SHELL: Set this to true, and the container will stay running, but apache won't be started. Useful for shelling into the container and examining how the startup-script referenced by the Dockerfile CMD instruction went.
 
    EXAMPLE:
    
@@ -68,40 +68,39 @@ Initially apache will require that the user be authenticated with the shib-test.
    - The public cert file content was the same used for the `"<ds:X509Certificate>"` element value in the samlMeta.xml file
       provided for the IDP when it was originally set up.
 
-5. **Run container:**
-   Build the container:
-
+5. **Build the image:**
+   
    ```
-   cd docker/shibboleth
+   cd shibboleth
    sh docker.sh task=build
    ```
-
-   then run the container:
-
+   
+5. **Run container:**
+   
    ```
-   cd docker/shibboleth
+   cd shibboleth
    sh docker.sh task=run profile=infnprd
    ```
-
+   
    In the prior example, the named profile in the ~/.aws/credentials is referenced. From it the credentials and account number are derived.
    However, you can also enter those individually:
 
    ```
-   cd docker/shibboleth
+   cd shibboleth
    sh docker.sh \
      task=run \
      aws_access_key_id=[ID] \
      aws_secret_access_key=[KEY] \
      aws_account_nbr=770203350335
    ```
-
+   
    You can also build/rebuild and run/rerun the container in a single step *(use "deploy" instead of "run")*:
-
+   
    ```
-   cd docker/shibboleth
+   cd shibboleth
    sh docker.sh task=deploy profile=infnprd
    ```
-
+   
 6. **Browser:**
    Apache is running with a virtual host that matches the host file entry made earlier.
    This means you can get to it through the container on port 80 or 443: 
