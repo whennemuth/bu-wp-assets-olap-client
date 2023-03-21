@@ -48,7 +48,7 @@ createShibVirtualHost() {
   echo "createShibVirtualHost..."
 
   # Replace the ServerName and related place-holders with the actual ServerName value
-  setServerName() { sed "s|local-ol|${SERVER_NAME:-"local-ol"}|g" < /dev/stdin; }
+  setServerName() { sed "s|localhost|${SERVER_NAME:-"localhost"}|g" < /dev/stdin; }
 
   # Uncomment the include directive for the shibboleth apache conf content
   includeShibConf() { sed "s|# IncludeOptional|IncludeOptional|g" < /dev/stdin; }

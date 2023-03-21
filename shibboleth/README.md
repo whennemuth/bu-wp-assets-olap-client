@@ -36,8 +36,6 @@ Initially apache will require that the user be authenticated with the shib-test.
       The application you have accessed is not registered for use with this service.
       ```
 
-   - SP_HOME_URL: The 
-
    - IDP_ENTITY_ID: The entity ID of the shib-test IDP
 
    - SHIB_SP_KEY: The name of the private key used by the shibboleth2.xml file. The "private" part of the keypair whose public value is known by the IDP. The file itself will be mounted into the /etc/shibboleth directory of the container with this name.
@@ -47,7 +45,7 @@ Initially apache will require that the user be authenticated with the shib-test.
    - SHELL: Set this to true, and the container will stay running, but apache won't be started. Useful for shelling into the container and examining how the startup-script referenced by the Dockerfile CMD instruction went.
 
    EXAMPLE:
-   
+
    ```
    OLAP=bu-wp-assets-olap-dev-olap
    SERVER_NAME=dev.kualitest.research.bu.edu
@@ -69,14 +67,14 @@ Initially apache will require that the user be authenticated with the shib-test.
       provided for the IDP when it was originally set up.
 
 5. **Build the image:**
-   
+  
    ```
    cd shibboleth
    sh docker.sh task=build
    ```
    
 5. **Run container:**
-   
+  
    ```
    cd shibboleth
    sh docker.sh task=run profile=infnprd

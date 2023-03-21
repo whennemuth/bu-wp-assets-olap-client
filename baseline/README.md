@@ -11,13 +11,6 @@ In order to contact the olap, apache uses the signer.sh script, documented [here
 
    - *NOTE: If you opted to also create a public ec2 instance as part of stack creation, all the following steps are automatically executed on that server and you can later reach it via the elastic IP address of the ec2 instance if you want to, ie: https://312.28.15.1/index.htm.*
 
-2. **Host file:**
-   Make an entry in your host file: 
-
-   ```
-   127.0.0.1	local-ol
-   ```
-
 3. **Run container:**
    Build the container:
 
@@ -60,8 +53,8 @@ In order to contact the olap, apache uses the signer.sh script, documented [here
    ```
 
 4. **Browser:**
-   Apache is running with a virtual host that matches the host file entry made earlier.
+   Apache is running with a localhost virtual host.
    This means you can get to it through the container on port 80 or 443: 
-   https://local-ol/index.htm
+   https://localhost/index.htm
    or you can target an image directly:
-   https://local-ol/dilbert1.gif
+   https://localhost/dilbert1.gif
