@@ -81,7 +81,7 @@ else
 
   getIdpMetadataFile
 
-  modifyAttributesFile
+  # modifyAttributesFile
 
   createShibVirtualHost
 
