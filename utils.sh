@@ -39,9 +39,17 @@ createEnvFile() {
   else
     echo "#/bin/bash" > vars.env
   fi
-  echo "AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID" >> vars.env
-  echo "AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY" >> vars.env
-  echo "AWS_SESSION_TOKEN=$AWS_SESSION_TOKEN" >> vars.env
-  echo "AWS_ACCOUNT_NBR=$(getAcctNbr)" >> vars.env
-  echo "REGION=$(getRegion)" >> vars.env
+  addcred() {
+    local credvar="$1"
+    local credval="$2"
+    if [ -z "$(cat vars.default.env | grep $credvar)" ] ; then
+      local val="${credval:-${!credvar}}"
+      eval "echo "${credvar}=${val}" >> vars.env"
+    fi
+  }
+  addcred 'AWS_ACCESS_KEY_ID'
+  addcred 'AWS_SECRET_ACCESS_KEY'
+  addcred 'AWS_SESSION_TOKEN'
+  addcred 'AWS_ACCOUNT_NBR' "$(getAcctNbr)"
+  addcred 'REGION' "$(getRegion)"
 }

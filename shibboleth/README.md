@@ -22,7 +22,7 @@ Initially apache will require that the user be authenticated with the shib-test.
    ```
    
 3. **Prepare a parameters file:**
-   Create a file with name/value pairs that need to be in the running containers environment as variables *(the docker "--env-file" switch is used).*
+   Create a file, `vars.env`, with name/value pairs that need to be in the running containers environment as variables *(the docker "--env-file" switch is used).*
 
    - OLAP: The name of the object lambda endpoint created as part of step 1
 

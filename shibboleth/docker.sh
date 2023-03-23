@@ -88,5 +88,9 @@ case "$TASK" in
   deploy)
     kill && build && run
     ;;
+  env)
+    [ -n "$PROFILE" ] && setLocalCredentials $PROFILE
+    createEnvFile
+    ;;
 esac
 
