@@ -10,7 +10,6 @@ RUN \
 COPY apache-startup.sh /etc/apache2/
 COPY shibboleth2-template.xml /etc/shibboleth/
 COPY attribute-map.xml /etc/shibboleth/
-COPY attribute-policy.xml /etc/shibboleth/
 
 RUN \
   dos2unix /etc/apache2/*.sh && \

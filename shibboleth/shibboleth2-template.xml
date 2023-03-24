@@ -109,7 +109,7 @@
 
         <!-- Default filtering policy for recognized attributes, lets other data pass. -->
         <AttributeFilter type="XML" validate="true" path="attribute-policy.xml"/>
-
+    
         <!-- Simple file-based resolver for using a single keypair. -->
         <CredentialResolver type="File" key="SHIB_SP_KEY" certificate="SHIB_SP_CERT"/>
 
